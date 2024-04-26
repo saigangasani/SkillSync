@@ -6,6 +6,12 @@ from flask.cli import with_appcontext
 import openai
 import random
 from flask import session
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # This loads the environment variables from the .env file
+
+OPEN_API_KEY = os.getenv('OPEN_API_KEY')
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hola.db'
@@ -14,7 +20,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 ALLOWED_EXTENSIONS = {'docx'}
 db = SQLAlchemy(app)
 
-openai.api_key = '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'
+openai.api_key = OPEN_API_KEY
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
