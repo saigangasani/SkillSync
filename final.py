@@ -6,9 +6,11 @@ from flask.cli import with_appcontext
 import openai
 import random
 from flask import session
-import os
+from dotenv import load_dotenv
 
-api_key = os.getenv('API_KEY')
+load_dotenv()
+
+api_key = os.getenv('api_key')
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hola.db'
